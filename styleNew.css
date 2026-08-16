@@ -103,7 +103,7 @@ body {
   height: 44px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(90deg, #fb00be, #ff0074, #ff00ce, #ff07a9, #ee006c);
+  background: linear-gradient(90deg, #4b0b0b, #2f0002, #7a0000, #450209, #2f0002,  #660000);
 }
 
 .bottom-box::after {
@@ -113,9 +113,9 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(160, 230, 215, 0.2) 35%,
-    rgba(220, 248, 242, 0.65) 50%,
-    rgba(160, 230, 215, 0.2) 65%,
+    rgba(180, 20, 30, 0.2) 35%,
+    rgba(220, 40, 50, 0.65) 50%,
+    rgba(180, 20, 30, 0.2) 65%,
     transparent 100%
   );
   animation: bar-sweep 7s ease-in-out infinite alternate;
@@ -149,14 +149,14 @@ body {
   min-width: 0;
 }
 
-.photo-of-the-day {
+.photo {
   margin: 0;
   min-width: 0;
 }
 
 /* a fixed ratio keeps the panel from lurching as portrait and landscape
    photos take their turn */
-.photo-of-the-day img {
+.photo img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
@@ -165,7 +165,7 @@ body {
   background: #e8e8e8;
 }
 
-.photo-of-the-day figcaption {
+.photo figcaption {
   margin-top: 8px;
   font-size: 13px;
   color: #555;
