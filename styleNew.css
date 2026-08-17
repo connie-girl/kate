@@ -28,19 +28,19 @@ body {
   margin-bottom: 1px;
   flex-shrink: 0;
   display: flex;
-  justify-content: space-between; /* Pushes image to the left and text to the right */
-  align-items: center;            /* Aligns icon and text vertically in the center */
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
 .header-title {
   margin: 0;
-  padding-top: 16px; /* Drops text lower without shifting the image */
-  line-height: 1;    /* Tightens the text bounding box */                    /* Removes default h1 margins for clean alignment */
+  padding-top: 16px;
+  line-height: 1;
 }
 
 .header-icon {
-  height: 60px;                   /* Adjust size as needed */
+  height: 60px;
   width: auto;
 }
 
@@ -103,7 +103,7 @@ body {
   height: 44px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(90deg, #4b0b0b, #2f0002, #7a0000, #450209, #2f0002,  #660000);
+  background: linear-gradient(90deg, #1a3570, #2d6bc4, #5abfb0, #2d6bc4, #1a3570);
 }
 
 .bottom-box::after {
@@ -113,9 +113,9 @@ body {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(180, 20, 30, 0.2) 35%,
-    rgba(220, 40, 50, 0.65) 50%,
-    rgba(180, 20, 30, 0.2) 65%,
+    rgba(160, 230, 215, 0.2) 35%,
+    rgba(220, 248, 242, 0.65) 50%,
+    rgba(160, 230, 215, 0.2) 65%,
     transparent 100%
   );
   animation: bar-sweep 7s ease-in-out infinite alternate;
@@ -154,8 +154,6 @@ body {
   min-width: 0;
 }
 
-/* a fixed ratio keeps the panel from lurching as portrait and landscape
-   photos take their turn */
 .photo img {
   display: block;
   width: 100%;
@@ -216,75 +214,71 @@ a {
 }
 
 a:visited {
-  color: #3a0404;
+  color: #010225;
 }
 
 a:hover {
   color: #003cff;
 }
 
-/* shimmer squares */
-
-.shimmer-squares {
+/* Borjgali row & shimmer styles */
+.borjgali-row {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 9px;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.shimmer-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
   flex-shrink: 0;
 }
 
-.sq {
-  background-size: 300% 300%;
-  animation: sq-shimmer ease-in-out infinite;
+.shimmer-image {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.sq-a {
-  width: 62px;
-  height: 62px;
-  background-image: linear-gradient(135deg, #4b0b0b, #2f0002, #7a0000, #450209, #2f0002);
-  animation-duration: 8s;
+.shimmer-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  
+  -webkit-mask-image: url('borjgal.png');
+  mask-image: url('borjgal.png');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  /* Dynamically uses inline variables (with default fallbacks) */
+  background: linear-gradient(
+    var(--shimmer-angle, 110deg),
+    transparent 30%,
+    var(--shimmer-color, rgba(255, 255, 255, 0.7)) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer var(--shimmer-speed, 2.5s) infinite;
 }
 
-.sq-b {
-  width: 62px;
-  height: 62px;
-  background-image: linear-gradient(135deg, #5d0000, #2f0002, #561818, #9b000a);
-  animation-duration: 11s;
-  animation-delay: -4s;
-}
-
-.sq-c {
-  width: 62px;
-  height: 62px;
-  background-image: linear-gradient(180deg, #2f0002, #390000, #8b0000, #3e0200, #660000);
-  animation-duration: 13s;
-  animation-delay: -1.5s;
-}
-
-.sq-d {
-  width: 62px;
-  height: 62px;
-  background-image: linear-gradient(300deg, #8b0000, #390000, #660000, #3e0200);
-  animation-duration: 7s;
-  animation-delay: -6s;
-}
-
-.sq-e {
-  width: 62px;
-  height: 62px;
-  background-image: linear-gradient(165deg, #660000, #ae0000, #660000, #960000);
-  animation-duration: 15s;
-  animation-delay: -5s;
-}
-
-@keyframes sq-shimmer {
-  0%   { background-position: 0% 0%; }
-  50%  { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* blogroll */
-
 .blogroll-layout {
   display: grid;
   grid-template-rows: 1fr auto;
@@ -303,7 +297,6 @@ a:hover {
 }
 
 /* consulting */
-
 .case-hint {
   margin: -4px 0 12px;
   font-size: 13px;
@@ -381,7 +374,6 @@ a:hover {
 }
 
 /* mobile */
-
 @media (max-width: 1160px) {
   html,
   body {
@@ -407,7 +399,6 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
-  /* the photo of the day is moved in here by photo-of-the-day.js */
   .right-column {
     grid-template-rows: auto auto;
   }
