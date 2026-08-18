@@ -226,21 +226,20 @@ a:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between; /* Spreads them evenly across available space */
-  gap: 8px;                       /* Gap shrinks or adapts naturally */
-  width: 100%;                    /* Fits the parent container */
-  max-width: 100%;
+  gap: 12px;                      /* Fixed 12px gap between emblems */
+  width: 100%;                    /* Spans the full width of the parent panel */
   margin-bottom: 1rem;
 }
 
 .shimmer-container {
   position: relative;
-  /* Allow the icon to scale down on small screens while capping maximum size */
-  width: var(--icon-size, 60px);
-  max-width: calc((100% - 32px) / 5); /* Ensures 5 items + 4 gaps fit within 100% width */
-  aspect-ratio: 1 / 1;               /* Keeps it square as it shrinks */
-  height: auto;                       /* Height driven by aspect-ratio */
-  flex-shrink: 1;                     /* Allows shrinking when space is tight */
+  /* Allow emblems to grow up to 60px on desktop, but shrink fluidly on mobile */
+  width: 100%;
+  max-width: var(--icon-size, 60px); 
+  aspect-ratio: 1 / 1;            /* Maintains perfect square proportions while shrinking */
+  height: auto;
+  flex: 1 1 0;                    /* Forces all 5 emblems to share space and shrink equally */
+  min-width: 0;                   /* Allows flex items to shrink below their content size on small screens */
 }
 
 .shimmer-image {
