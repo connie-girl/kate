@@ -37,6 +37,12 @@ body {
   margin: 0;
   padding-top: 16px;
   line-height: 1;
+  
+}
+
+.header-title a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .header-icon {
