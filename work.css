@@ -1,4 +1,4 @@
-/* work page — loaded after styleNew.css, adds only yearbook-specific rules */
+/* work page — loaded after styleNew.css, adds only work-specific rules */
 
 /* Page Layout */
 .work-layout {
@@ -15,7 +15,6 @@
 .left-panel p {
   margin: 0;
   line-height: 1.52;
-
 }
 
 /* Photo Gallery */
@@ -31,16 +30,45 @@
   column-gap: 12px;
 }
 
+/* Image styling */
 .gallery-columns img {
   width: 100%;
   height: auto;
   display: block;
+  position: relative;
+  z-index: 1; /* Sits on top of the tile shimmer background */
 }
 
+/* Skeleton Loading Placeholder on Tile */
 .tile {
   position: relative;
   margin-bottom: 12px;
   break-inside: avoid;
+  overflow: hidden;
+  
+  /* Placeholder height before image renders */
+  min-height: 180px; 
+  background-color: #2961f6;
+  
+  /* Shimmer gradient overlay */
+  background-image: linear-gradient(
+    90deg,
+    #2961f6 0%,
+    #d0ddff 50%,
+    #2961f6 100%
+  );
+  background-size: 200% 100%;
+  animation: tile-shimmer 1.6s infinite ease-in-out;
+}
+
+/* Shimmer Keyframe Animation */
+@keyframes tile-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 @media (max-width: 600px) {
