@@ -39,11 +39,6 @@ body {
   line-height: 1;
 }
 
-.header-icon {
-  height: 60px;
-  width: auto;
-}
-
 .site-header h1 {
   margin: 0;
   font-size: 28px;
@@ -103,7 +98,7 @@ body {
   height: 44px;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(90deg, #1a3570, #2d6bc4, #5abfb0, #2d6bc4, #1a3570);
+  background: linear-gradient(90deg, #1a3570, #2d6bc4, #048feb, #2d6bc4, #1a3570);
 }
 
 .bottom-box::after {
@@ -214,7 +209,7 @@ a {
 }
 
 a:visited {
-  color: #010225;
+  color: #040998;
 }
 
 a:hover {
@@ -226,15 +221,21 @@ a:hover {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between; /* Spreads them evenly across available space */
+  gap: 8px;                       /* Gap shrinks or adapts naturally */
+  width: 100%;                    /* Fits the parent container */
+  max-width: 100%;
   margin-bottom: 1rem;
 }
 
 .shimmer-container {
   position: relative;
-  width: 60px;
-  height: 60px;
-  flex-shrink: 0;
+  /* Allow the icon to scale down on small screens while capping maximum size */
+  width: var(--icon-size, 60px);
+  max-width: calc((100% - 32px) / 5); /* Ensures 5 items + 4 gaps fit within 100% width */
+  aspect-ratio: 1 / 1;               /* Keeps it square as it shrinks */
+  height: auto;                       /* Height driven by aspect-ratio */
+  flex-shrink: 1;                     /* Allows shrinking when space is tight */
 }
 
 .shimmer-image {
@@ -278,100 +279,6 @@ a:hover {
   }
 }
 
-/* blogroll */
-.blogroll-layout {
-  display: grid;
-  grid-template-rows: 1fr auto;
-  gap: 20px;
-  flex: 1;
-  min-height: 0;
-}
-
-.blogroll-panel {
-  padding: 26px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  min-height: 0;
-  overflow-y: auto;
-}
-
-/* consulting */
-.case-hint {
-  margin: -4px 0 12px;
-  font-size: 13px;
-  color: #555;
-}
-
-.case {
-  border: 1px solid #111;
-}
-
-.case + .case {
-  margin-top: 10px;
-}
-
-.case summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 12px 14px;
-  font-weight: 700;
-  letter-spacing: -0.2px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.case summary::-webkit-details-marker {
-  display: none;
-}
-
-.case summary::after {
-  content: '+';
-  font-weight: 400;
-  flex-shrink: 0;
-}
-
-.case[open] summary::after {
-  content: '\2013';
-}
-
-.case summary:hover {
-  background: #eaeaea;
-}
-
-.case-body {
-  padding: 2px 14px 14px;
-}
-
-.case-body p {
-  margin: 0 0 10px;
-  line-height: 1.5;
-}
-
-.case-body p:last-child {
-  margin-bottom: 0;
-}
-
-.consulting-photo {
-  margin: 0;
-}
-
-.consulting-photo img {
-  display: block;
-  width: 100%;
-  max-height: 250px;
-  object-fit: cover;
-  object-position: center 35%;
-  border: 1px solid #111;
-}
-
-.consulting-photo figcaption {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #555;
-}
 
 /* mobile */
 @media (max-width: 1160px) {
@@ -408,7 +315,4 @@ a:hover {
     gap: 28px;
   }
 
-  .consulting-photo img {
-    max-height: 240px;
-  }
 }
