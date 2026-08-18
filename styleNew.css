@@ -39,6 +39,11 @@ body {
   line-height: 1;
 }
 
+.header-icon {
+  height: 60px;
+  width: auto;
+}
+
 .site-header h1 {
   margin: 0;
   font-size: 28px;
