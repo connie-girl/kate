@@ -227,6 +227,11 @@ a:hover {
   color: #003cff;
 }
 
+h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* Borjgali row & shimmer styles */
 .borjgali-row {
   display: flex;
