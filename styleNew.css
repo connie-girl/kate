@@ -5,7 +5,7 @@
 html,
 body {
   margin: 0;
-  height: 100dvh;
+  min-height: 100vh;
 }
 
 html {
@@ -21,8 +21,11 @@ body {
 }
 
 .page {
-  height: auto;
-  min-height: 100vh;
+  width: calc(100% - 24px);
+  margin: 12px;
+  min-height: calc(100vh - 24px);
+  display: flex;
+  flex-direction: column;
 }
 
 .site-header {
@@ -38,7 +41,6 @@ body {
   margin: 0;
   padding-top: 16px;
   line-height: 1;
-  
 }
 
 .header-title a {
@@ -65,11 +67,12 @@ body {
   text-stroke: 1.2px #0b0b0b;
 }
 
-
+/* Single column layout across all screens */
 .layout {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex: 1;
 }
 
 .box {
@@ -82,26 +85,19 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  min-height: 0;
-  min-width: 0;
 }
 
 .right-column {
-  display: grid;
-  grid-template-rows: 1fr auto;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  min-height: 0;
-  min-width: 0;
 }
 
 .right-panel {
   padding: 26px 28px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 22px;
-  min-height: 0;
-  overflow-y: auto;
 }
 
 .bottom-box {
@@ -135,25 +131,23 @@ body {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  flex: 1;
-  min-height: 0;
 }
 
-/* below the about block: work list on the left, photo of the day on the right */
+/* Stacks work list and photo vertically to prevent overflow */
 .left-columns {
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .left-main {
   display: flex;
   flex-direction: column;
   gap: 18px;
-  min-width: 0;
 }
 
 .photo {
   margin: 0;
-  min-width: 0;
 }
 
 .photo img {
@@ -233,20 +227,19 @@ h2 a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;                      /* Fixed 12px gap between emblems */
-  width: 100%;                    /* Spans the full width of the parent panel */
+  gap: 12px;
+  width: 100%;
   margin-bottom: 1rem;
 }
 
 .shimmer-container {
   position: relative;
-  /* Allow emblems to grow up to 60px on desktop, but shrink fluidly on mobile */
   width: 100%;
   max-width: var(--icon-size, 60px); 
-  aspect-ratio: 1 / 1;            /* Maintains perfect square proportions while shrinking */
+  aspect-ratio: 1 / 1;
   height: auto;
-  flex: 1 1 0;                    /* Forces all 5 emblems to share space and shrink equally */
-  min-width: 0;                   /* Allows flex items to shrink below their content size on small screens */
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .shimmer-image {
@@ -270,7 +263,6 @@ h2 a {
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 
-  /* Dynamically uses inline variables (with default fallbacks) */
   background: linear-gradient(
     var(--shimmer-angle, 110deg),
     transparent 30%,
@@ -288,42 +280,4 @@ h2 a {
   100% {
     background-position: -200% 0;
   }
-}
-
-
-/* mobile */
-@media (max-width: 1160px) {
-  html,
-  body {
-    height: auto;
-  }
-
-  .page {
-    height: auto;
-  }
-
-  .layout {
-    grid-template-columns: 1fr;
-    flex: none;
-    gap: 14px;
-  }
-
-  .left-panel {
-    justify-content: flex-start;
-    gap: 28px;
-  }
-
-  .left-columns {
-  grid-template-columns: 1fr;
-}
-
-  .right-column {
-    grid-template-rows: auto auto;
-  }
-
-  .right-panel {
-    justify-content: flex-start;
-    gap: 28px;
-  }
-
 }
