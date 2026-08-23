@@ -141,10 +141,7 @@ body {
 
 /* below the about block: work list on the left, photo of the day on the right */
 .left-columns {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 20px;
-  align-items: start;
+  grid-template-columns: 1fr;
 }
 
 .left-main {
