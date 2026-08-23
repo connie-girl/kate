@@ -8,6 +8,10 @@ body {
   height: 100dvh;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #f3f3f3;
   color: #0b0b0b;
