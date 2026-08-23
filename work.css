@@ -8,6 +8,15 @@
   width: 100%;
 }
 
+.layout {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+
 .left-panel {
   width: 100%;
 }

@@ -21,11 +21,8 @@ body {
 }
 
 .page {
-  width: calc(100% - 24px);
-  margin: 12px;
-  height: calc(100dvh - 24px);
-  display: flex;
-  flex-direction: column;
+  height: auto;
+  min-height: 100vh;
 }
 
 .site-header {
@@ -68,13 +65,11 @@ body {
   text-stroke: 1.2px #0b0b0b;
 }
 
+
 .layout {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  flex: 1;
-  min-height: 0;
-  align-items: stretch;
 }
 
 .box {
@@ -322,8 +317,8 @@ h2 a {
   }
 
   .left-columns {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: 1fr;
+}
 
   .right-column {
     grid-template-rows: auto auto;
