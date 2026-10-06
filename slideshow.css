@@ -1,8 +1,22 @@
+/* Slideshow for ensemble-slides.html.
+   Loaded after styleNew.css and work.css, so these rules win ties.
+
+   Progressive enhancement: with no JavaScript, every slide shows,
+   stacked in order with its caption. slideshow.js adds .is-enhanced
+   to the container, which switches to one-slide-at-a-time. */
 
 .slideshow {
   --slide-max-height: 75vh;
   --control-size: 2.5rem;
   min-width: 0; /* lets the grid cell shrink instead of overflowing */
+  /* work.css gives .photo-gallery overflow-y:auto / overflow-x:hidden, which
+     would clip the focus rings on the buttons. A slideshow doesn't need
+     an inner scroll area, so turn it off. */
+  overflow: visible;
+  /* Same frame as .left-panel / .box in styleNew.css: 1px black border,
+     26px/28px padding, full width of the column. */
+  border: 1px solid #111;
+  padding: 26px 28px;
 }
 
 .slideshow .slides {
@@ -32,8 +46,11 @@
 
 .slideshow figcaption {
   margin-top: 0.75rem;
-  font-size: 0.95rem;
+  font-size: 13px;                  /* matches .photo figcaption in styleNew.css */
   line-height: 1.4;
+  color: #555;
+  text-align: center;
+  width: 100%;
 }
 
 /* ---------- Enhanced (JS) mode ---------- */
@@ -77,17 +94,14 @@
   line-height: 1;
   color: inherit;
   background: transparent;
-  border: 1px solid currentColor;
-  border-radius: 50%;
+  border: 1px solid #111;
+  border-radius: 0;                 /* square, like .box */
   cursor: pointer;
 }
 
 .slideshow-controls button:hover:not(:disabled) {
-  background: currentColor;
-}
-
-.slideshow-controls button:hover:not(:disabled) > * {
-  color: #fff;
+  background: #111;
+  color: #f3f3f3;
 }
 
 .slideshow-controls button:focus-visible {
