@@ -1,0 +1,124 @@
+/* Slideshow for ensemble-slides.html.
+   Loaded after styleNew.css and work.css, so these rules win ties.
+
+   Progressive enhancement: with no JavaScript, every slide shows,
+   stacked in order with its caption. slideshow.js adds .is-enhanced
+   to the container, which switches to one-slide-at-a-time. */
+
+.slideshow {
+  --slide-max-height: 75vh;
+  --control-size: 2.5rem;
+  min-width: 0; /* lets the grid cell shrink instead of overflowing */
+}
+
+.slideshow .slides {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.slideshow .slide figure {
+  margin: 0 0 2rem;
+}
+
+.slideshow .slide-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideshow .slide img {
+  display: block;
+  max-width: 100%;
+  max-height: var(--slide-max-height);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.slideshow figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* ---------- Enhanced (JS) mode ---------- */
+
+.slideshow.is-enhanced .slide {
+  display: none;
+}
+
+.slideshow.is-enhanced .slide.is-active {
+  display: block;
+}
+
+.slideshow.is-enhanced .slide figure {
+  margin-bottom: 0;
+}
+
+/* Reserve space for the tallest caption so the controls don't jump
+   as you move between slides; slideshow.js sets --caption-height. */
+.slideshow.is-enhanced figcaption {
+  min-height: var(--caption-height, 3em);
+}
+
+.slideshow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.slideshow-controls[hidden] {
+  display: none;
+}
+
+.slideshow-controls button {
+  width: var(--control-size);
+  height: var(--control-size);
+  padding: 0;
+  font: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: inherit;
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slideshow-controls button:hover:not(:disabled) {
+  background: currentColor;
+}
+
+.slideshow-controls button:hover:not(:disabled) > * {
+  color: #fff;
+}
+
+.slideshow-controls button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.slideshow-controls button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.slideshow-counter {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .slideshow.is-enhanced .slide.is-active {
+    animation: slide-in 250ms ease-out;
+  }
+}
+
+@keyframes slide-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

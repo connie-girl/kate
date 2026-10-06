@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="ensemble wines">
+  <title>pager</title>
+  <link rel="icon" type="image/x-icon" href="borjgal.ico">
+  <link rel="stylesheet" href="styleNew.css" />
+  <link rel="stylesheet" href="work.css" />
+  <link rel="stylesheet" href="slideshow.css" />
+  <script src="slideshow.js" defer></script>
+</head>
+
+<body>
+  <main class="page">
+    <header class="site-header">
+      <!-- Text header on the left -->
+      <h1 class="header-title"> <a href="index.html">kate <span>mccardel</span></a></h1>
+
+      <!-- Icon on the right -->
+      <img src="borjgali-icon.png" alt="kate mccardel" class="header-icon">
+    </header>
+
+<section class="work-layout">
+  <aside class="left-panel box">
+    <p> I built a small cellular devicce which sends messages with one purpose: to meet up for a pint. It acts functionally as a pager, but I found a specialized microcontroller with a built-in MicroSIM holder and antenna. This means it uses modern cellular towers, and can transmit its message anywhere, anytime. </p>
+  </aside>
+
+  <div class="photo-gallery slideshow" data-slideshow aria-roledescription="carousel" aria-label="Ensemble vineyard photos">
+
+    <!-- Slides are an ordered list: order in this file = order on screen. Without JavaScript, they all show stacked, in order, with captions. -->
+    <ol class="slides" aria-live="polite">
+      <li class="slide">
+        <figure>
+          <div class="slide-frame"><img src="pager1.jpg" alt=""></div>
+          <figcaption>Hardware stack.</figcaption>
+        </figure>
+      </li>
+      <li class="slide">
+        <figure>
+          <div class="slide-frame"><img src="pager2.jpg" alt="" loading="lazy"></div>
+          <figcaption>A diagram of the wiring.</figcaption>
+        </figure>
+      </li>
+      <li class="slide">
+        <figure>
+          <div class="slide-frame"><img src="pager3.jpg" alt="" loading="lazy"></div>
+          <figcaption>The microcontroller and its components. This SIM card has 500MB of data, and ten years of service with a one-time payment.</figcaption>
+        </figure>
+      </li>
+      <li class="slide">
+        <figure>
+          <div class="slide-frame"><img src="pager4.png" alt="" loading="lazy"></div>
+          <figcaption>Some components are connected via female jumper cables to male pins; others I soldered together. All of the wires had to be trimmed, stripped, twisted, soldered for reinforcement, and insulated with heat shrink.</figcaption>
+        </figure>
+      </li>
+      <li class="slide">
+        <figure>
+          <div class="slide-frame"><img src="pager5.jpg" alt="" loading="lazy"></div>
+          <figcaption>The two devices assembled and working.</figcaption>
+        </figure>
+      </li>
+      <li class="slide">
+        <figure>
+          <div class="slide-frame"><img src="pager6.png" alt="" loading="lazy"></div>
+          <figcaption>A rendering of the 3D printed case.</figcaption>
+        </figure>
+      </li>
+      <li class="slide">
+        <figure>
+          <div class="slide-frame"><img src="pager7.png" alt="" loading="lazy"></div>
+          <figcaption>Bit of software.</figcaption>
+        </figure>
+      </li>
+       <li class="slide">
+        <figure>
+          <div class="slide-frame"><img src="pager8.png" alt="" loading="lazy"></div>
+          <figcaption>The OLED screen cycles through these messages.</figcaption>
+        </figure>
+      </li>
+    </ol>
+
+    <!-- Hidden until slideshow.js runs, since the buttons do nothing without it -->
+    <div class="slideshow-controls" hidden>
+      <button type="button" data-prev aria-label="Previous photo">&larr;</button>
+      <span class="slideshow-counter" data-counter></span>
+      <button type="button" data-next aria-label="Next photo">&rarr;</button>
+    </div>
+
+  </div>
+</section>
+  </main>
+</body>
+
+</html>
