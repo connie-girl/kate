@@ -1,9 +1,3 @@
-/* Slideshow for ensemble-slides.html.
-   Loaded after styleNew.css and work.css, so these rules win ties.
-
-   Progressive enhancement: with no JavaScript, every slide shows,
-   stacked in order with its caption. slideshow.js adds .is-enhanced
-   to the container, which switches to one-slide-at-a-time. */
 
 .slideshow {
   --slide-max-height: 75vh;

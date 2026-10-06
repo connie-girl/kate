@@ -1,6 +1,3 @@
-// Ordered slideshow for ensemble-slides.html.
-// Without this script every slide is visible, stacked in order.
-// With it: one slide at a time, prev/next buttons, arrow keys, "n / total" counter.
 
 document.querySelectorAll('[data-slideshow]').forEach((show) => {
   const slides = Array.from(show.querySelectorAll('.slide'));
